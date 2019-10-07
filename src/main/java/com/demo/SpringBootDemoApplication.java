@@ -17,7 +17,7 @@ import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguratio
 @EnableJpaRepositories
 @EnableAutoConfiguration
 @EntityScan(basePackages = "com.demo.entities")
-@Import(JpaConfiguration.class)
+@Import({JpaConfiguration.class, WebConfiguration.class, SecurityConfiguration.class})
 @SpringBootApplication(scanBasePackages={"com.demo"})
 public class SpringBootDemoApplication {
 
