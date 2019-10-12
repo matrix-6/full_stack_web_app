@@ -12,7 +12,8 @@ angular.module('crudApp').factory('EmployeeInfoService',
                 updateEmployeeInfo: updateEmployeeInfo,
                 removeEmployeeInfo: removeEmployeeInfo,
                 loadAllCosts: loadAllCosts,
-                getAllCosts: getAllCosts
+                getAllCosts: getAllCosts,
+                getSalaryCostByCompany: getSalaryCostByCompany
             };
 
             return factory;
@@ -130,5 +131,17 @@ angular.module('crudApp').factory('EmployeeInfoService',
                 return $localStorage.costs;
             }
 
+            function getSalaryCostByCompany(company) {
+            	console.log('Adding total salary costs by a company: ' + company);
+            	var total = 0;
+                for(var i = 0; i < $localStorage.employeeInfos.length; i++){
+                	if ($localStorage.employeeInfos[i].sCompany == company) {
+                		total += $localStorage.employeeInfos[i].dSalary;
+                	}                	
+                }
+                
+                //console.log('Adding total salary costs by a company total: ' + $localStorage.costByCompany);
+                return Math.round(total * 100) / 100;
+            }
         }
     ]);
