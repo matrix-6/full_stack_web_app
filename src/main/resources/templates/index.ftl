@@ -4,6 +4,7 @@
     <head>
         <title>${title}</title>
         <link href="css/bootstrap.css" rel="stylesheet"/>
+        <link rel="icon" href="data:;base64,=">
         <link href="css/app.css" rel="stylesheet"/>
     </head>
     <body>
