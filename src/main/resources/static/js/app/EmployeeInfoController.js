@@ -19,6 +19,7 @@ angular.module('crudApp').controller('EmployeeInfoController',
 
         self.reloadCosts = reloadCosts;
         self.getAllCosts = getAllCosts;
+        self.getSalaryCostByCompany = getSalaryCostByCompany;
         
         self.successMessage = '';
         self.errorMessage = '';
@@ -140,6 +141,12 @@ angular.module('crudApp').controller('EmployeeInfoController',
                 }
             );
         }
+        
+        function getSalaryCostByCompany(company) {
+        	console.log('getSalaryCostByCompany call company ->' + company);
+        	$scope.salaryCost = EmployeeInfoService.getSalaryCostByCompany(company);
+        }
+        
     }
 
 
