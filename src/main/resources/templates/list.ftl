@@ -104,7 +104,7 @@
         <!-- Default panel contents -->
         <div class="panel-heading"><span class="lead">Find Company Salary Cost </span></div>
 		<div class="panel-body">
-			
+			<#-- old way, need to refresh to get latest data
 			<div class="formcontainer">
 	            <div class="alert alert-success" role="alert" ng-if="ctrl.successMessage">{{ctrl.successMessage}}</div>
 	            <div class="alert alert-danger" role="alert" ng-if="ctrl.errorMessage">{{ctrl.errorMessage}}</div>
@@ -122,15 +122,41 @@
 	                </div>
 	                			
 	                <tt>Current Salary Cost($): {{companyCost.dSumSalary}}</tt><br/>
-	                <hr>
 	                			
 					<div class="row">
 	                    <div class="form-actions floatRight">
 	                        <button type="button" ng-click="ctrl.reloadCosts()" class="btn btn-warning btn-sm" >Reload Company Salary Cost</button>
 	                    </div>
 	                </div>
-	            </form>				
+	            </form>					
+			</div>
+			-->
 			
-		</div>
-    </div>
+			<#-- new way to auto refresh latet data when class="table-responsive" reloaded -->
+			<div class="formcontainer">
+	            <div class="alert alert-success" role="alert" ng-if="ctrl.successMessage">{{ctrl.successMessage}}</div>
+	            <div class="alert alert-danger" role="alert" ng-if="ctrl.errorMessage">{{ctrl.errorMessage}}</div>
+	            <hr>
+	            <form ng-submit="ctrl.reloadCosts()" name="myForm3" class="form-horizontal">
+	                <div class="row">
+	                    <div class="form-group col-md-12">
+	                        <label class="col-md-2 control-lable" for="sFirstName">Company Name</label>
+	                        <div class="col-md-7">	                            							
+								<select ng-model="employeeInfoCost" ng-change="ctrl.getSalaryCostByCompany(employeeInfoCost)" st-search="sCompany" class="form-control input-sm">
+							      <option value="">-- choose company --</option>
+							      <option ng-repeat="employeeInfo in ctrl.getAllEmployeeInfos() | unique: 'sCompany'" value="{{employeeInfo.sCompany}}">
+							      {{employeeInfo.sCompany}}
+   								  </option>
+							    </select>								
+	                        </div>
+	                    </div>
+	                </div>
+	               	               	
+	                <tt>Current Salary Cost($): {{salaryCost}}</tt><br/>
+	            </form>		
+			</div>
+			
+			
+    	</div>
+	</div>
 </div>
